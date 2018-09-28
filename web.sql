@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2018 at 06:01 PM
+-- Generation Time: Sep 28, 2018 at 03:46 PM
 -- Server version: 10.1.35-MariaDB
--- PHP Version: 7.1.21
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,30 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `korisnik`
---
-
-CREATE TABLE `korisnik` (
-  `id` int(11) NOT NULL,
-  `ime` varchar(50) NOT NULL,
-  `prezime` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `adresa` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `korisnik`
---
-
-INSERT INTO `korisnik` (`id`, `ime`, `prezime`, `email`, `username`, `adresa`) VALUES
-(1, 'a', 'a', 'aa@aaaa.aaa', 'a', 'a'),
-(2, 'Matej', 'Štajduhar', 'mstajduhar55@gmail.com', 'Cunkea', 'Krstova 146'),
-(3, 'bla', 'blaa', 'bla@bla.bl', 'bla', 'hgfd 43');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `news`
 --
 
@@ -64,23 +40,67 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `naslov`, `link`, `tekst`) VALUES
-(1, 'PRVI PISMENI ISPIT (WEB)', 'https://docs.google.com/spreadsheets/d/1zGnn3PaUpe2ik-cjmE02xGU2mALn7uD6_Ph-haf63a8/edit?usp=sharing', 'Poštovane kolegice i kolege,\r\nrezultati ispita se nalaze na linku\r\n<br>\r\nDatum usmenog ispita biti će naknadno objavljen.\r\nIspiti se mogu pogledati u ponedjeljak od 9 do 11 h.\r\nŽelim Vas samo podsjetiti da položene kontrolne zadaće vrijede samo za\r\nova dva zimska roka, a položeni pismeni ispit samo na tom roku.'),
-(2, 'REZULTATI 2. KONTROLNE ZADAĆE (RIKM)', 'https://loomen.carnet.hr/pluginfile.php/313352/mod_forum/attachment/228940/RIKM%20-%20Rezultati%202.', 'U prilogu su rezultati 2. kontrolne zadaće održane 27.01.2016.\r\nKontrolne zadaće se mogu pogledati: 4.01.2016. od 10:00 – 11:00 \r\nUkupni bodovi iz obje zadaće će biti objavljeni nakon uvida u kontrolne\r\nzadaće. \r\n\r\nPrivitak RIKM - Rezultati 2. kolokvija  održanog 27.01.2016.'),
-(3, 'ELEKTRIJADA 2016. (TRIBINA)', NULL, 'Pozivamo studente Elektrotehničkog fakulteta na tribinu o nadolazećoj Elektrijadi. \r\nLokacija ovogodišnje Elektrijade je Rimini (Italija) u razdoblju od 12.05.-17.05.2016. \r\nSvi studenti koji su zainteresirani za odlazak na Elektrijadu trebali bi doći na tribinu kako bi čuli sve važne informacije vezane za prijave, pripreme kao i za cijene putovanja. \r\nTribina će se održati 15.02.2016. na Elektrotehničkom fakultetu (Trpimirova) u prostoriji 2-31 u 16 sati.\r\nVidimo se :)'),
-(4, 'Github', 'https://Github.com/Cunkea', 'Here is my Github account with all of my projects.');
+(4, 'Github', 'https://Github.com/Cunkea', 'Here is my Github account with all of my projects.'),
+(5, 'Demon Army', '#', 'Started creating game in Unity called \"Demon Army\". it will be strategy point and click game for pc. ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE `projects` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `text` varchar(1000) NOT NULL,
+  `link` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `title`, `text`, `link`) VALUES
+(1, 'Hip Hop Osijek', 'Web page for our association with all events we made and guests that came to support us. Start up project is HipHopOsijek.UI', 'https://github.com/Cunkea/HipHopOsijek'),
+(2, 'Snake game', 'My version of snake game made in java. It has 2 modes, can be played single or with friend. Controls are with arrow keys and/or WASD. Hard mode is made to get random size change, and when played in 2 players collision is deactivated if you run into your friend.', 'https://github.com/Cunkea/Snake');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prouser`
+--
+
+CREATE TABLE `prouser` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `projectId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(25) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `surname`, `email`, `username`, `password`) VALUES
+(2, 'Matej', 'Štajduhar', 'mstajduhar55@gmail.com', 'Cunkea', '134679852a');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `korisnik`
---
-ALTER TABLE `korisnik`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `news`
@@ -90,20 +110,53 @@ ALTER TABLE `news`
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `projects`
 --
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
--- AUTO_INCREMENT for table `korisnik`
+-- Indexes for table `prouser`
 --
-ALTER TABLE `korisnik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `prouser`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `prouser`
+--
+ALTER TABLE `prouser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
