@@ -38,7 +38,9 @@ h4 {
   font-family: font-family: 'Ubuntu', sans-serif; 
 }
 
-
+#inf{
+  text-align: center;
+}
 
 @media (min-width: 768px) {
 	.navbar .navbar-nav {
@@ -148,13 +150,15 @@ textarea {
 }
 
 .col-sm-6 {
-  opacity: 0.8;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   -moz-box-shadow: 0 0 2px 2px #888;
   -webkit-box-shadow: 0 0 2px 2px#888;
   box-shadow: 0 0 2px 2px #888;
+  font-family: 'Ubuntu', sans-serif;
+}
 
-
+.col-sm-6 h3{
+  text-align: center;
 }
 
 /* linkovi èlanaka */
@@ -182,6 +186,30 @@ textarea {
 }
 
 .col-md-4 a:active {
+  text-decoration: none;
+  font-weight: bold;
+  color: #660021;
+}
+
+
+.col-sm-7 a:link {
+  text-decoration: none;
+  color: #660021;
+}
+
+.col-sm-7 a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: #660021;
+}
+
+.col-sm-7 a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: #660021;
+}
+
+.col-sm-7 a:active {
   text-decoration: none;
   font-weight: bold;
   color: #660021;

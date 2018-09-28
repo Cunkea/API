@@ -56,14 +56,14 @@
 								<div class="item">
 									<img src="images/image-slider-4.jpg" class="img-responsive" alt="...">
 									<div class="caption">
-										<span></span>
+										<span>Models Tab</span>
 									</div>  
 								</div>
 
 								<div class="item">
 									<img src="images/image-slider-5.jpg" class="img-responsive" alt="...">
 									<div class="caption">
-										<span></span>
+										<span>Placeholder image</span>
 									</div>
 								</div>
 							</div>
@@ -91,7 +91,7 @@
 								<p><img src="images/news/<?php echo $rez['naslov']?>.jpg" width="100%;" height="auto;" alt=""></p>
 								<h4><strong><?php echo $rez['naslov']; ?></strong></h4>
 								<p style="overflow-x: hidden;width: 100%;"><?php echo $rez['tekst']; ?></p>
-										<p><a target="_blank" href="<?php echo $rez['link']; ?>">Više >></a></p>
+										<p><a target="_blank" href="<?php echo $rez['link']; ?>">More >></a></p>
 								<?php
 								} catch (PDOException $e) {
 									print_r($e);
@@ -110,7 +110,7 @@
 								<p><img src="images/news/<?php echo $rez['naslov']?>.jpg" width="100%;" height="auto;" alt=""></p>
 								<h4><strong><?php echo $rez['naslov']; ?></strong></h4>
 								<p style="overflow-x: hidden;width: 100%;"><?php echo $rez['tekst']; ?></p>
-										<p><a target="_blank" href="<?php echo $rez['link']; ?>">Više >></a></p>
+										<p><a target="_blank" href="<?php echo $rez['link']; ?>">More >></a></p>
 								<?php
 								} catch (PDOException $e) {
 									print_r($e);
@@ -129,7 +129,7 @@
 								<p><img src="images/news/<?php echo $rez['naslov']?>.jpg" width="100%;" height="auto;" alt=""></p>
 								<h4><strong><?php echo $rez['naslov']; ?></strong></h4>
 								<p style="overflow-x: hidden;width: 100%;"><?php echo $rez['tekst']; ?></p>
-										<p><a target="_blank" href="<?php echo $rez['link']; ?>">Više >></a></p>
+										<p><a target="_blank" href="<?php echo $rez['link']; ?>">More >></a></p>
 								<?php
 								} catch (PDOException $e) {
 									print_r($e);

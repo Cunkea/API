@@ -1,6 +1,6 @@
 <?php 
 $currentpage = $_SERVER['REQUEST_URI'];
-$webpage = "/API/";
+$webpage = "/api/";
 ?>
 <div class="container">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -33,7 +33,9 @@ $webpage = "/API/";
 						include_once 'user.php';
 						$u=unserialize($_SESSION['user']);
 						?>
-			 		<li><a class="hvr-underline-from-center" href="#"><i class="fa fa-user fa-lg"></i>&nbsp;<?php echo $u->getUsername(); ?></a></li>
+			 		<li <?php if( $currentpage == $webpage . "prsn.php") {echo 'class="active"';}?>>
+			 			<a class="hvr-underline-from-center" href="prsn.php"><i class="fa fa-user fa-lg"></i>&nbsp;<?php echo $u->getUsername(); ?></a>
+			 		</li>
 			 		<?php
 			 			}
 			 		}catch (PDOException $e){

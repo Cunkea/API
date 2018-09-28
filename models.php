@@ -6,57 +6,43 @@
 
 <body>
 	<div class="wrapper">
-		<?php include_once 'Shared/navbar.php' ?>
+		<?php include_once 'Shared/navbar.php'; ?>
 		<div class="sadrzaj">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
-						<!-- php za formu prijave -->
 						<?php include_once 'Shared/carelo.php'; ?>
 					</div>
 
-					<!-- slider -->
-
 					<div class="col-sm-7 col-sm-offset-1">
-						<div class="bezalko" id="content">
-							<table style="width: 100%;">
-								<thead>
-									<h3 style="text-align: center"><i class="fa fa-chevron-circle-down"></i>&nbsp;Popis korisnika</h3>
-									<tr>
-										<th><h4><strong>Ime</strong></h4></th>
-										<th><h4><strong>Prezime</strong></h4></th>
-										<th><h4><strong>Adresa</strong></h4></th>
-										<th><h4><strong>Username</strong></h4></th>
-										<th><h4><strong>Email</strong></h4></th>
-									</tr>
-								</thead>
-								<tbody>
+						<h3><strong>Models</strong></h3>
+						<?php
+						try{
+							include_once 'konfig.php';
+							$veza = new PDO($dsn, $user, $password);
+							$izraz = $veza->prepare("select * from models;");
+							$izraz->execute();
+							$rez = $izraz->fetchALL(PDO::FETCH_OBJ);
+							foreach ($rez as $red) {
+								?>
+								<p><img src="models/<?php echo $red -> model?>.png" width="100%;" height="auto;" alt=""></p>
+								<h4><strong><?php echo $red -> model; ?></strong></h4>
+								<p style="overflow-x: hidden;width: 100%;"><?php echo $red -> text; ?></p>
+								<?php
+								if(isset($_SESSION['login'])){
+								?>
+									<p><a target="_blank" href="#">download >></a></p>
 									<?php
-									try {
-										include_once 'konfig.php';
-  										$veza = new PDO($dsn, $user, $password);
-  										$izraz = $veza->prepare("select * from korisnik;");
-  										$izraz->execute();
-  										$rez = $izraz->fetchAll(PDO::FETCH_OBJ);
-  										foreach ($rez as $red){
-  										?> 
-										<tr>
-											<td><?php echo $red->ime;?></td>
-											<td><?php echo $red->prezime;?></td>
-											<td><?php echo $red->adresa;?></td>
-											<td><?php echo $red->username;?></td>
-											<td><?php echo $red->email;?></td>
-										</tr>
-										<?php 	
-  										}
-  										$veza=null;
-									} catch (PDOException $e) {
-										print_r($e);
-									}
-  									?>
-								</tbody>
-							</table>
-						</div>
+								}else{
+								?>
+									<i>Download link only if you have account!</i>
+								<?php
+								}
+							}
+						}catch (PDOException $e){
+							print_r($e);
+						}
+						?>
 					</div>
 				</div>
 			</div>

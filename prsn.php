@@ -10,17 +10,32 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
+							<?php
+							try{
+								if(isset($_SESSION['login'])){
+								include_once 'user.php';
+								$u=unserialize($_SESSION['user']);
+							
+							?>
 							<h3><strong>About me</strong></h3>
 							<p id="inf"><strong>
 								******<br><br><br>
-								<img src="images/me/me.jpg"><br><br><br>
+								<img src="images/default-user-image.png"><br><br><br>
 								******<br><br><br>
-								Name:	Matej Štajduhar<br><br><br>
-								Email:  mstajduhar55@gmail.com<br><br><br>
-								Github: <a href="https://www.github.com/cunkea" target="_blank">Cunkea</a><br><br><br>
+							Name:	<?php echo $u -> getName() . " " . $u ->getSurname(); ?><br><br><br>
+							Username:	<?php echo $u -> getUsername(); ?><br><br><br>
+							Email:  <?php echo $u -> getEmail(); ?><br><br><br>
 								******
 								<br><br><br>
 							</strong></p>
+							<?php
+								} else {
+									header('index.php');
+								}
+							}catch (PDOException $e){
+								print_r($e);
+							}
+							?>
 						</div>
 					</div>
 				</div>

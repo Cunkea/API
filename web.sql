@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2018 at 03:46 PM
+-- Generation Time: Sep 28, 2018 at 10:16 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `models`
+--
+
+CREATE TABLE `models` (
+  `id` int(11) NOT NULL,
+  `model` varchar(20) NOT NULL,
+  `text` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `models`
+--
+
+INSERT INTO `models` (`id`, `model`, `text`) VALUES
+(1, 'test', 'Model monkey. See how model look like.'),
+(2, 'test2', 'Cube model just to have something for now.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `news`
 --
 
@@ -41,7 +61,8 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`id`, `naslov`, `link`, `tekst`) VALUES
 (4, 'Github', 'https://Github.com/Cunkea', 'Here is my Github account with all of my projects.'),
-(5, 'Demon Army', '#', 'Started creating game in Unity called \"Demon Army\". it will be strategy point and click game for pc. ');
+(5, 'Demon Army', '#', 'Started creating game in Unity called \"Demon Army\". it will be strategy point and click game for pc. '),
+(6, 'Models', 'models.php', 'Changed models tab. Now it\'s not empty finnaly. Also info and user tab have picture and info inside.');
 
 -- --------------------------------------------------------
 
@@ -103,6 +124,12 @@ INSERT INTO `user` (`id`, `name`, `surname`, `email`, `username`, `password`) VA
 --
 
 --
+-- Indexes for table `models`
+--
+ALTER TABLE `models`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
@@ -135,10 +162,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `models`
+--
+ALTER TABLE `models`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `projects`
