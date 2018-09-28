@@ -17,6 +17,7 @@
 								******<br><br><br>
 								Name:	Matej Štajduhar<br><br><br>
 								Email:  mstajduhar55@gmail.com<br><br><br>
+								Phone: 097 743 97 45<br><br><br>
 								Github: <a href="https://www.github.com/cunkea" target="_blank">Cunkea</a><br><br><br>
 								******
 								<br><br><br>
